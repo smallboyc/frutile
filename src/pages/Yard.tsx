@@ -1,9 +1,12 @@
-import Container from "../components/Container";
+import { NavLink } from "react-router-dom";
 
-export default function Yard() {
+const Yard = () => {
   return (
-    <Container>
+    <>
       <h1 className="leckerli-one-regular">Hello Yard !</h1>
-    </Container>
+      <NavLink to="/">Home</NavLink>
+    </>
   );
-}
+};
+
+export default Yard;
