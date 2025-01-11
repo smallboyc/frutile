@@ -1,9 +1,10 @@
+import Container from "./components/Container";
 import "./styles/global.css";
 function App() {
   return (
-    <div>
+    <Container>
       <h1 className="leckerli-one-regular">Hello fr'utile !</h1>
-    </div>
+    </Container>
   );
 }
 
