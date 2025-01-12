@@ -16,6 +16,7 @@ import hazelnut from "./images/hazelnut.png";
 import kiwi from "./images/kiwi.png";
 import lemon from "./images/lemon.png";
 import lime from "./images/lime.png";
+import lychee from "./images/lychee.png";
 import mango from "./images/mango.png";
 import mangosteen from "./images/mangosteen.png";
 import melon from "./images/melon.png";
@@ -55,6 +56,7 @@ const fruitsIcons = {
   kiwi,
   lemon,
   lime,
+  lychee,
   mango,
   mangosteen,
   melon,
