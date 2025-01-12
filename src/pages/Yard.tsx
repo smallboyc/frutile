@@ -21,7 +21,9 @@ const Yard = () => {
             (fruit: Fruit) =>
               fruit.name
                 .toLocaleLowerCase()
-                .startsWith(input.toLocaleLowerCase()) && <Card fruit={fruit} />
+                .startsWith(input.toLocaleLowerCase()) && (
+                <Card key={fruit.id} fruit={fruit} />
+              )
           )
         )}
       </div>

@@ -13,7 +13,7 @@ body {
 
 h1 {
   font-weight: 600;
-  font-size: xx-large;
+  font-size: x-large;
 }
 h2 {
   font-weight: 500;
@@ -30,26 +30,38 @@ p {
   padding-left: 16px;
   padding-right: 16px;
   box-sizing: border-box;
-  background-color: whitesmoke;
+  background-color: rgb(248, 248, 248);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 header {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10px;
+  padding: 20px;
+}
+
+.frutile-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-info-container {
+  display: flex;
+  align-items: center;
+  gap: 100px;
 }
 
 .nav-link-container {
   display: flex;
   list-style-type: none;
-  gap: 64px;
+  gap: 80px;
 }
 
 li,
 li a,
-h2 a {
+h1 a {
   cursor: pointer;
   text-decoration: none;
   color: black;
@@ -85,6 +97,6 @@ h2 a {
   gap: 10px;
 }
 
-.fruit-name{
+.fruit-name {
   text-align: center;
 }
