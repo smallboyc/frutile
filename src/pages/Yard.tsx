@@ -5,10 +5,12 @@ import "rsuite/Loader/styles/index.css";
 import { Fruit } from "../types/Fruit";
 import { useFetchData } from "../hooks/useFetchData";
 import SearchBar from "../components/SearchBar";
+import fruitsIcons from "../assets/fruitsIcons";
 
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");
   const [input, setInput] = useState("");
+
   return (
     <>
       <h1>Hello Yard !</h1>
@@ -23,7 +25,19 @@ const Yard = () => {
               fruit.name
                 .toLocaleLowerCase()
                 .startsWith(input.toLocaleLowerCase()) && (
-                <p key={fruit.id}>{fruit.name}, </p>
+                <div key={fruit.id} className="fruit-item-container">
+                  <img
+                    src={
+                      (fruitsIcons as Record<string, string>)[
+                        fruit.name.toLocaleLowerCase()
+                      ]
+                    }
+                    width={16}
+                    height={16}
+                    alt={fruit.name.toLocaleLowerCase()}
+                  />
+                  <p key={fruit.id}>{fruit.name}, </p>
+                </div>
               )
           )
         )}
