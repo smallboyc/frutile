@@ -1,35 +1,23 @@
-import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import fetchFruits from "../api/fetchData";
+import Loader from "rsuite/Loader";
+import "rsuite/Loader/styles/index.css";
 import { Fruit } from "../types/Fruit";
+import { useFetchData } from "../hooks/useFetchData";
 
 const Yard = () => {
-  const [fruits, setFruits] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getFruits = async () => {
-      try {
-        const data = await fetchFruits();
-        setFruits(data);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-        setLoading(false);
-      }
-    };
-
-    getFruits();
-  }, []);
-
+  const { data, loading } = useFetchData("api/fruit/all");
   return (
     <>
-      <h1 className="leckerli-one-regular">Hello Yard !</h1>
+      <h1>Hello Yard !</h1>
       <NavLink to="/">Home</NavLink>
       {loading ? (
-        <p>Loading fruits...</p>
+        <Loader size="sm" speed="slow" content="Chargement de la data..." />
       ) : (
-        fruits.map((fruit: Fruit) => <p key={fruit.id}>{fruit.name}</p>)
+        data?.map((fruit: Fruit) => (
+          <p key={fruit.id}>
+            {fruit.name} & sugar = {fruit.nutritions.sugar}
+          </p>
+        ))
       )}
     </>
   );

@@ -1,7 +1,21 @@
-.leckerli-one-regular {
-  font-family: "Leckerli One", serif;
-  font-weight: 400;
+body {
+  font-family: "DynaPuff", serif;
+  font-optical-sizing: auto;
   font-style: normal;
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: xx-large;
+}
+h2 {
+  font-weight: 500;
+}
+
+p {
+  font-weight: 400;
+  color: gray;
 }
 
 .container {

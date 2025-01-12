@@ -6,7 +6,7 @@ import Yard from "../pages/Yard";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Root />, //Layout
     children: [
       {
         path: "",

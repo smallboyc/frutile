@@ -7,7 +7,9 @@ const Root = () => {
   return (
     <Container>
       <Header />
-      <Outlet />
+      <main>
+        {/* children */} <Outlet />
+      </main>
       <Footer />
     </Container>
   );
