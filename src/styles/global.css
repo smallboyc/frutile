@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   font-family: "DynaPuff", serif;
   font-optical-sizing: auto;
@@ -24,4 +30,11 @@ p {
   padding-left: 16px;
   padding-right: 16px;
   box-sizing: border-box;
+}
+
+.fruits-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
 }
