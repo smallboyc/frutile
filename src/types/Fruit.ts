@@ -1,16 +1,16 @@
-export interface Nutritions {
+export type Nutritions = {
   calories: number;
   fat: number;
   sugar: number;
   carbohydrates: number;
   protein: number;
-}
+};
 
-export interface Fruit {
+export type Fruit = {
   id: number;
   name: string;
   family: string;
   order: string;
   genus: string;
   nutritions: Nutritions;
-}
+};

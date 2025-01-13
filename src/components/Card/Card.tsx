@@ -5,7 +5,12 @@ import { motion, useMotionValue } from "framer-motion";
 import "./Card.css";
 import ThemedText from "../ThemedText/ThemedText";
 
-const Card = ({ fruit, OnClick }: { fruit: Fruit; OnClick: () => void }) => {
+type CardProps = {
+  fruit: Fruit;
+  OnClick: () => void;
+};
+
+const Card = ({ fruit, OnClick }: CardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const rotateValue = useMotionValue(0);
 
