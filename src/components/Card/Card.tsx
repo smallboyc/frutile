@@ -5,7 +5,7 @@ import { motion, useMotionValue } from "framer-motion";
 import "./Card.css";
 import ThemedText from "../ThemedText/ThemedText";
 
-const Card = ({ fruit }: { fruit: Fruit }) => {
+const Card = ({ fruit, OnClick }: { fruit: Fruit; OnClick: () => void }) => {
   const [isHovered, setIsHovered] = useState(false);
   const rotateValue = useMotionValue(0);
 
@@ -28,7 +28,7 @@ const Card = ({ fruit }: { fruit: Fruit }) => {
         transition: { type: "spring", stiffness: 300, damping: 20 },
       }}
       whileTap={{ scale: 0.8 }}
-      onClick={() => console.log(`Show ${fruit.id} : ${fruit.name} data.`)}
+      onClick={OnClick}
     >
       <div className="fruit-item">
         <motion.div
