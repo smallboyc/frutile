@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Fruit } from "../types/Fruit";
-import fruitsIcons from "../assets/fruitsIcons";
+import { Fruit } from "../../types/Fruit";
+import fruitsIcons from "../../assets/fruitsIcons";
 import { motion, useMotionValue } from "framer-motion";
+import "./Card.css";
 
 const Card = ({ fruit }: { fruit: Fruit }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -10,7 +11,7 @@ const Card = ({ fruit }: { fruit: Fruit }) => {
   return (
     <motion.div
       key={fruit.id}
-      className="fruit-item-container"
+      className="card-container"
       initial={{ opacity: 0, scale: 0 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{

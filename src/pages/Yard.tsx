@@ -3,9 +3,8 @@ import { Fruit } from "../types/Fruit";
 import { useFetchData } from "../hooks/useFetchData";
 import Loader from "rsuite/Loader";
 import "rsuite/Loader/styles/index.css";
-import SearchBar from "../components/SearchBar";
-import Card from "../components/Card";
-
+import SearchBar from "../components/SearchBar/SearchBar";
+import Card from "../components/Card/Card";
 
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");
@@ -15,7 +14,7 @@ const Yard = () => {
   const filteredFruit: Fruit[] | undefined = data?.filter(
     (fruit: Fruit) => !hiddenFruitList.includes(fruit.id)
   );
-  const displayFruit = (fruit: Fruit) => {;
+  const displayFruit = (fruit: Fruit) => {
     return fruit.name.toLocaleLowerCase().startsWith(input.toLocaleLowerCase());
   };
 

@@ -1,4 +1,5 @@
 import { FaSearch } from "react-icons/fa";
+import "./SearchBar.css";
 
 const SearchBar = ({
   input,
@@ -9,7 +10,7 @@ const SearchBar = ({
 }) => {
   return (
     <div className="search-bar-container">
-      <FaSearch size={16}/>
+      <FaSearch size={16} />
       <input
         className="search-bar-input"
         placeholder="Search a fruit..."

@@ -1,7 +1,8 @@
 import { FaLanguage } from "react-icons/fa6";
 import { MdFavoriteBorder } from "react-icons/md";
-import Navigation from "./Navigation";
-import Logo from "./Logo";
+import Navigation from "./Navigation/Navigation";
+import Logo from "./Logo/Logo";
+import "./Header.css";
 
 const Header = () => {
   return (
