@@ -5,7 +5,7 @@ import { motion, useMotionValue } from "framer-motion";
 
 const Card = ({ fruit }: { fruit: Fruit }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const rotateValue = useMotionValue(0); // Stocke la rotation actuelle
+  const rotateValue = useMotionValue(0);
 
   return (
     <motion.div
@@ -22,11 +22,11 @@ const Card = ({ fruit }: { fruit: Fruit }) => {
       whileHover={{
         cursor: "pointer",
         scale: 1.1,
-        boxShadow: "3px 3px 3px 3px rgba(105, 16, 16, 0.2)",
+        boxShadow: "3px 3px 3px 3px rgba(247, 52, 94, 0.17)",
         transition: { type: "spring", stiffness: 300, damping: 20 },
       }}
       whileTap={{ scale: 0.8 }}
-      onClick={() => console.log(`Show ${fruit.name} data.`)}
+      onClick={() => console.log(`Show ${fruit.id} : ${fruit.name} data.`)}
     >
       <div className="fruit-item">
         <motion.div

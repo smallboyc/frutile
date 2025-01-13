@@ -9,6 +9,12 @@ import Card from "../components/Card";
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");
   const [input, setInput] = useState("");
+  // const [displayDataCount, setDisplayDataCount] = useState<number | null>(data?.length | null)
+
+  const hiddenFruitList: number[] = [65, 66, 95, 101, 104];
+  const filteredFruit: Fruit[] | undefined = data?.filter(
+    (fruit: Fruit) => !hiddenFruitList.includes(fruit.id)
+  );
 
   return (
     <>
@@ -17,7 +23,7 @@ const Yard = () => {
         {loading ? (
           <Loader size="sm" speed="slow" content="Chargement de la data..." />
         ) : (
-          data?.map(
+          filteredFruit?.map(
             (fruit: Fruit) =>
               fruit.name
                 .toLocaleLowerCase()

@@ -6,9 +6,9 @@ const Navigation = () => {
       <li>
         <NavLink to="/yard">Yard</NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink to="/quiz">Quiz</NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink to="/about">About</NavLink>
       </li>
