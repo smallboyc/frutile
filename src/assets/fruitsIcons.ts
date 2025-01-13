@@ -16,7 +16,6 @@ import grape from "./images/grape.png";
 import greenapple from "./images/greenapple.png";
 import guava from "./images/guava.png";
 import hazelnut from "./images/hazelnut.png";
-// import horned_melon from "./images/horned_melon.png";
 import jackfruit from "./images/jackfruit.png";
 import kiwifruit from "./images/kiwifruit.png";
 import lemon from "./images/lemon.png";
@@ -65,7 +64,6 @@ const fruitsIcons = {
   guava,
   hazelnut,
   jackfruit,
-  // horned_melon,
   kiwifruit,
   lemon,
   lime,
