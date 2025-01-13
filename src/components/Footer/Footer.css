@@ -1,0 +1,9 @@
+.footer-icons-container {
+  padding: var(--container-padding);
+  background-color: var(--secondary-color);
+}
+
+.footer-infos-container {
+  padding: var(--container-padding);
+  background-color: var(--terciary-color);
+}

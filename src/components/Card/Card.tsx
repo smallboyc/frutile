@@ -3,6 +3,7 @@ import { Fruit } from "../../types/Fruit";
 import fruitsIcons from "../../assets/fruitsIcons";
 import { motion, useMotionValue } from "framer-motion";
 import "./Card.css";
+import ThemedText from "../ThemedText/ThemedText";
 
 const Card = ({ fruit }: { fruit: Fruit }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -55,9 +56,10 @@ const Card = ({ fruit }: { fruit: Fruit }) => {
             alt={fruit.name.toLocaleLowerCase()}
           />
         </motion.div>
-        <p className="fruit-name" key={fruit.id}>
-          {fruit.name}
-        </p>
+        <div key={fruit.id}>
+          {" "}
+          <ThemedText>{fruit.name}</ThemedText>
+        </div>
       </div>
     </motion.div>
   );

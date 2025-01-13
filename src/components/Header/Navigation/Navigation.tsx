@@ -1,17 +1,19 @@
 import { NavLink } from "react-router-dom";
 import "./Navigation.css";
+import ThemedText from "../../ThemedText/ThemedText";
 
 const Navigation = () => {
   return (
     <ul className="nav-link-container">
       <li>
-        <NavLink to="/yard">Yard</NavLink>
+        <ThemedText>
+          <NavLink to="/yard">Yard</NavLink>
+        </ThemedText>
       </li>
-      {/* <li>
-        <NavLink to="/quiz">Quiz</NavLink>
-      </li> */}
       <li>
-        <NavLink to="/about">About</NavLink>
+        <ThemedText>
+          <NavLink to="/about">About</NavLink>
+        </ThemedText>
       </li>
     </ul>
   );

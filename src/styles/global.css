@@ -1,5 +1,8 @@
 :root {
   --primary-color: #f7345e;
+  --secondary-color: #f7345ed3;
+  --terciary-color: #111111;
+  --container-padding: 30px;
   --custom-shadow: 1px 1px 1px 3px var(--primary-color);
 }
 
@@ -9,26 +12,11 @@
   padding: 0px;
 }
 
-
 body {
   font-family: "DynaPuff", serif;
   font-optical-sizing: auto;
   font-style: normal;
   letter-spacing: 0.5px;
-}
-
-h1 {
-  font-weight: 600;
-  font-size: x-large;
-}
-
-h2 {
-  font-weight: 500;
-}
-
-p {
-  font-weight: 400;
-  color: gray;
 }
 
 li,
@@ -44,15 +32,26 @@ h1 a {
 .yard-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  padding: 20px 100px;
+  gap: 20px;
+  padding: 60px 100px;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-buttons-container {
+  display: flex;
+  gap: 20px;
 }
 
 .fruits-container {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: center;
+  margin-top: 30px;
+  column-gap: 48px;
+  row-gap: 30px;
 }
