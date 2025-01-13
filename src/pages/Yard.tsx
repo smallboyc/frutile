@@ -9,12 +9,14 @@ import Card from "../components/Card/Card";
 import Button from "../components/Button/Button";
 import ThemedText from "../components/ThemedText/ThemedText";
 import Modal from "../components/Modal/Modal";
+import Dropdown from "../components/Dropdown/Dropdown";
 
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");
   const [input, setInput] = useState("");
   const [selectedFruit, setSelectedFruit] = useState<Fruit | null>(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [dropDownIsOpen, setDropdownIsOpen] = useState(false);
 
   const hiddenFruitList: number[] = [65, 66, 95, 101, 104];
   const filteredFruit: Fruit[] | undefined = data?.filter(
@@ -33,10 +35,19 @@ const Yard = () => {
   const openModal = (fruit: Fruit) => {
     setSelectedFruit(fruit);
     setModalIsOpen(true);
+    setDropdownIsOpen(false);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
+  };
+
+  const openDropdown = () => {
+    setDropdownIsOpen(true);
+  };
+
+  const closeDropdown = () => {
+    setDropdownIsOpen(false);
   };
 
   return (
@@ -47,16 +58,21 @@ const Yard = () => {
         favorite fruits. Have fun!
       </ThemedText>
       <SearchBar input={input} setInput={setInput} />
+      {/* TODO : Update filters & dropdowns */}
       <div className="filters-container">
         <ThemedText color="grey">Apply filters...</ThemedText>
         <div className="filter-buttons-container">
-          <Button onClick={() => console.log("Family filter")}>Family</Button>
+          <Button onClick={openDropdown}>Family</Button>
           <Button onClick={() => console.log("Order filter")}>Order</Button>
           <Button onClick={() => console.log("Genus filter")}>Genus</Button>
           <Button onClick={() => console.log("Nutritions filter")}>
             Nutritions
           </Button>
         </div>
+        {/* dropdown */}
+        <AnimatePresence>
+          {dropDownIsOpen && <Dropdown closeDropwdown={closeDropdown} />}
+        </AnimatePresence>
       </div>
       <ThemedText color="grey">
         {displayedFruitCount
@@ -79,6 +95,7 @@ const Yard = () => {
           )
         )}
       </div>
+      {/* modal */}
       <AnimatePresence>
         {modalIsOpen && (
           <>
