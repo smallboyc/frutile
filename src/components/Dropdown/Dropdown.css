@@ -1,16 +1,50 @@
 .custom-dropdown {
   position: absolute;
-  transform: translate(0, 110%);
+  /* transform: translate(0, 117px); */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: white;
-  padding: 20px;
+  padding: 20px 30px;
   border-radius: 10px;
-  width: 200px;
-  height: 100px;
   box-shadow: var(--custom-shadow);
   outline: none;
+  gap: 20px;
   z-index: 20;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 1px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+}
+
+.etc-container {
+  padding: 2px;
+}
+
+input[type="checkbox"] {
+  box-sizing: border-box;
+  width: 20px;
+  height: 20px;
+  margin: 6px;
+  padding: 0;
+  border-radius: 5px;
+  border: 2px solid var(--primary-color);
+  appearance: none;
+  background-color: transparent;
+  outline: none;
+  transition: outline 0.1s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
 }

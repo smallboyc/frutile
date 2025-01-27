@@ -7,12 +7,16 @@ const Navigation = () => {
     <ul className="nav-link-container">
       <li>
         <ThemedText>
-          <NavLink to="/yard">Yard</NavLink>
+          <NavLink to="/yard" onClick={() => localStorage.clear()}>
+            Yard
+          </NavLink>
         </ThemedText>
       </li>
       <li>
         <ThemedText>
-          <NavLink to="/about">About</NavLink>
+          <NavLink to="/about" onClick={() => localStorage.clear()}>
+            About
+          </NavLink>
         </ThemedText>
       </li>
     </ul>

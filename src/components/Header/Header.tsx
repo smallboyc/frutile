@@ -7,7 +7,10 @@ import "./Header.css";
 const Header = () => {
   return (
     <header>
-      <div className="frutile-logo-container">
+      <div
+        className="frutile-logo-container"
+        onClick={() => localStorage.clear()}
+      >
         <Logo />
       </div>
       <div className="header-info-container">
