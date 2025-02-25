@@ -1,47 +1,52 @@
 import { motion } from "framer-motion";
 import Button from "../Button/Button";
 import "./Dropdown.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThemedText from "../ThemedText/ThemedText";
 
 type DropdownProps = {
   closeDropwdown: () => void;
   filters?: string[];
-  currentFilter: string;
-  setCurrentFilter: React.Dispatch<React.SetStateAction<string>>;
-  labelFilters: "Family" | "Order" | "Genus" | undefined;
+  setFilter: React.Dispatch<React.SetStateAction<string[]>>;
+  filterType: string;
+  style?: React.CSSProperties;
 };
 
 const Dropdown = ({
   closeDropwdown,
   filters,
-  currentFilter,
-  setCurrentFilter,
-  labelFilters,
+  setFilter,
+  filterType,
+  style,
 }: DropdownProps) => {
-  const toggleFilter = (filter: string) => {
-    if (currentFilter == filter) {
-      setCurrentFilter("");
-      localStorage.removeItem(filter);
-    } else {
-      setCurrentFilter(filter);
-      localStorage.setItem(filter, filter);
-    }
-  };
-
+  
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [maxFilter, setMaxFilter] = useState<number>(7);
+
+  useEffect(() => {
+    // Récupérer les filtres sélectionnés depuis localStorage au chargement
+    const storedFilters = localStorage.getItem(filterType);
+    if (storedFilters) {
+      setSelectedFilters(JSON.parse(storedFilters));
+      setFilter(JSON.parse(storedFilters));
+    }
+  }, [filterType, setFilter]);
+
+  const toggleFilter = (filter: string) => {
+    let newFilters;
+    if (selectedFilters.includes(filter)) {
+      newFilters = selectedFilters.filter((f) => f !== filter);
+    } else {
+      newFilters = [...selectedFilters, filter];
+    }
+    setSelectedFilters(newFilters);
+    setFilter(newFilters);
+    localStorage.setItem(filterType, JSON.stringify(newFilters));
+  };
 
   return (
     <motion.div
-      style={{
-        translateX:
-          labelFilters == "Order"
-            ? "130px"
-            : labelFilters == "Genus"
-            ? "260px"
-            : "0px",
-        translateY: "117px",
-      }}
+      style={style}
       className="custom-dropdown"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -52,7 +57,6 @@ const Dropdown = ({
       }}
     >
       <div className="checkbox-container">
-        <ThemedText>{labelFilters}</ThemedText>
         <label htmlFor="volume">N° of filters</label>
         <input
           value={maxFilter}
@@ -70,7 +74,7 @@ const Dropdown = ({
               index < maxFilter && (
                 <div key={index} className="checkbox-item">
                   <input
-                    checked={localStorage.getItem(filter) ? true : false}
+                    checked={selectedFilters.includes(filter)}
                     type="checkbox"
                     id={filter}
                     name={filter}
