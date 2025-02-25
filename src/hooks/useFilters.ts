@@ -39,6 +39,15 @@ export const useFilters = (data: Fruit[] | null) => {
     return uniqueGenera;
   }, [data]);
 
+  //set all nutrition parameters. (static)
+  const nutritionFruits: string[] = [
+    "calories",
+    "fat",
+    "sugar",
+    "carbohydrates",
+    "protein",
+  ];
+
   return {
     familyFilters,
     setFamilyFilters,
@@ -49,5 +58,6 @@ export const useFilters = (data: Fruit[] | null) => {
     familyFruits,
     orderFruits,
     genusFruits,
+    nutritionFruits,
   };
 };

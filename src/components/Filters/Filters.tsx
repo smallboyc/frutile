@@ -12,9 +12,19 @@ type FilterProps = {
   familyFruits: string[];
   orderFruits: string[];
   genusFruits: string[];
+  nutritionFruits: string[];
   setFamilyFilters: React.Dispatch<React.SetStateAction<string[]>>;
   setOrderFilters: React.Dispatch<React.SetStateAction<string[]>>;
   setGenusFilters: React.Dispatch<React.SetStateAction<string[]>>;
+};
+
+//problème lors de la comparaison de nutritionFruits avec selectedFilterDropdown => manière brute
+const arraysEqual = (a: string[], b: string[]) => {
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
 };
 
 const Filters = ({
@@ -23,6 +33,7 @@ const Filters = ({
   familyFruits,
   orderFruits,
   genusFruits,
+  nutritionFruits,
   setFamilyFilters,
   setOrderFilters,
   setGenusFilters,
@@ -31,47 +42,61 @@ const Filters = ({
     <div className="filters-container">
       <ThemedText color="grey">Apply filters...</ThemedText>
       <div className="filter-buttons-container">
-        <Button onClick={() => setSelectedFilterDropdown(familyFruits)}>
-          Family
-        </Button>
-        <Button onClick={() => setSelectedFilterDropdown(orderFruits)}>
-          Order
-        </Button>
-        <Button onClick={() => setSelectedFilterDropdown(genusFruits)}>
-          Genus
-        </Button>
-        <Button onClick={() => console.log("Nutritions filter")}>
-          Nutritions
-        </Button>
+        {!selectedFilterDropdown ||
+        arraysEqual(selectedFilterDropdown, familyFruits) ? (
+          <Button onClick={() => setSelectedFilterDropdown(familyFruits)}>
+            Family
+          </Button>
+        ) : null}
+
+        {!selectedFilterDropdown ||
+        arraysEqual(selectedFilterDropdown, orderFruits) ? (
+          <Button onClick={() => setSelectedFilterDropdown(orderFruits)}>
+            Order
+          </Button>
+        ) : null}
+
+        {!selectedFilterDropdown ||
+        arraysEqual(selectedFilterDropdown, genusFruits) ? (
+          <Button onClick={() => setSelectedFilterDropdown(genusFruits)}>
+            Genus
+          </Button>
+        ) : null}
+
+        {!selectedFilterDropdown ||
+        arraysEqual(selectedFilterDropdown, nutritionFruits) ? (
+          <Button onClick={() => setSelectedFilterDropdown(nutritionFruits)}>
+            Nutritions
+          </Button>
+        ) : null}
+
+        {selectedFilterDropdown && (
+          <Button onClick={() => setSelectedFilterDropdown(null)}>X</Button>
+        )}
       </div>
+
       <AnimatePresence>
         {selectedFilterDropdown && (
           <Dropdown
-            closeDropwdown={() => setSelectedFilterDropdown(null)}
             filters={selectedFilterDropdown}
             setFilter={
-              selectedFilterDropdown === familyFruits
+              arraysEqual(selectedFilterDropdown, familyFruits)
                 ? setFamilyFilters
-                : selectedFilterDropdown === orderFruits
+                : arraysEqual(selectedFilterDropdown, orderFruits)
                 ? setOrderFilters
-                : setGenusFilters
+                : arraysEqual(selectedFilterDropdown, genusFruits)
+                ? setGenusFilters
+                : setGenusFilters // Assurez-vous que ceci est correct
             }
             filterType={
-              selectedFilterDropdown === familyFruits
+              arraysEqual(selectedFilterDropdown, familyFruits)
                 ? "family"
-                : selectedFilterDropdown === orderFruits
+                : arraysEqual(selectedFilterDropdown, orderFruits)
                 ? "order"
-                : "genus"
+                : arraysEqual(selectedFilterDropdown, genusFruits)
+                ? "genus"
+                : "nutrition"
             }
-            style={{
-              transform: `translateX(${
-                selectedFilterDropdown === orderFruits
-                  ? "130px"
-                  : selectedFilterDropdown === genusFruits
-                  ? "250px"
-                  : "0"
-              }) translateY(117px)`,
-            }}
           />
         )}
       </AnimatePresence>

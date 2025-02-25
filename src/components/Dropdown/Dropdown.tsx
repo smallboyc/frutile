@@ -1,25 +1,15 @@
 import { motion } from "framer-motion";
-import Button from "../Button/Button";
 import "./Dropdown.css";
 import { useEffect, useState } from "react";
 import ThemedText from "../ThemedText/ThemedText";
 
 type DropdownProps = {
-  closeDropwdown: () => void;
   filters?: string[];
   setFilter: React.Dispatch<React.SetStateAction<string[]>>;
   filterType: string;
-  style?: React.CSSProperties;
 };
 
-const Dropdown = ({
-  closeDropwdown,
-  filters,
-  setFilter,
-  filterType,
-  style,
-}: DropdownProps) => {
-  
+const Dropdown = ({ filters, setFilter, filterType }: DropdownProps) => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [maxFilter, setMaxFilter] = useState<number>(7);
 
@@ -46,7 +36,6 @@ const Dropdown = ({
 
   return (
     <motion.div
-      style={style}
       className="custom-dropdown"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -78,7 +67,7 @@ const Dropdown = ({
                     type="checkbox"
                     id={filter}
                     name={filter}
-                    onClick={() => toggleFilter(filter)}
+                    onChange={() => toggleFilter(filter)}
                   />
                   <label htmlFor={filter}>{filter}</label>
                 </div>
@@ -89,7 +78,6 @@ const Dropdown = ({
           <ThemedText>. . .</ThemedText>
         </div>
       </div>
-      <Button onClick={closeDropwdown}>Close</Button>
     </motion.div>
   );
 };

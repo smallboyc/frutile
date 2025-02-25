@@ -27,6 +27,12 @@ h1 a {
   color: black;
 }
 
+/* Home page */
+.doughnut{
+  width: 25%;
+  height: 25%;
+}
+
 /* Yard page */
 .yard-container {
   display: flex;

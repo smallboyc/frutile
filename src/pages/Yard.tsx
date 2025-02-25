@@ -25,6 +25,7 @@ const Yard = () => {
     familyFruits,
     orderFruits,
     genusFruits,
+    nutritionFruits
   } = useFilters(data);
 
   const [selectedFilterDropdown, setSelectedFilterDropdown] = useState<
@@ -76,6 +77,7 @@ const Yard = () => {
         familyFruits={familyFruits}
         orderFruits={orderFruits}
         genusFruits={genusFruits}
+        nutritionFruits={nutritionFruits}
         setFamilyFilters={setFamilyFilters}
         setOrderFilters={setOrderFilters}
         setGenusFilters={setGenusFilters}
