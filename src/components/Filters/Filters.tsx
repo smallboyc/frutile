@@ -3,10 +3,11 @@ import ThemedText from "../ThemedText/ThemedText";
 import { AnimatePresence } from "framer-motion";
 import Dropdown from "../Dropdown/Dropdown";
 import "./Filters.css";
+import { parentFilterCorrespond } from "../../utils/utils";
 
 type FilterProps = {
-  selectedFilterDropdown: string[] | null;
-  setSelectedFilterDropdown: React.Dispatch<
+  selectedFilterParent: string[] | null;
+  setSelectedFilterParent: React.Dispatch<
     React.SetStateAction<string[] | null>
   >;
   familyFruits: string[];
@@ -16,20 +17,12 @@ type FilterProps = {
   setFamilyFilters: React.Dispatch<React.SetStateAction<string[]>>;
   setOrderFilters: React.Dispatch<React.SetStateAction<string[]>>;
   setGenusFilters: React.Dispatch<React.SetStateAction<string[]>>;
-};
-
-//problème lors de la comparaison de nutritionFruits avec selectedFilterDropdown => manière brute
-const arraysEqual = (a: string[], b: string[]) => {
-  if (a.length !== b.length) return false;
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
+  setNutritionFilters: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 const Filters = ({
-  selectedFilterDropdown,
-  setSelectedFilterDropdown,
+  selectedFilterParent,
+  setSelectedFilterParent,
   familyFruits,
   orderFruits,
   genusFruits,
@@ -37,66 +30,81 @@ const Filters = ({
   setFamilyFilters,
   setOrderFilters,
   setGenusFilters,
+  setNutritionFilters,
 }: FilterProps) => {
+  const configs = [
+    {
+      type: "family",
+      filters: familyFruits,
+      setFilter: setFamilyFilters,
+      label: "Family",
+    },
+    {
+      type: "order",
+      filters: orderFruits,
+      setFilter: setOrderFilters,
+      label: "Order",
+    },
+    {
+      type: "genus",
+      filters: genusFruits,
+      setFilter: setGenusFilters,
+      label: "Genus",
+    },
+    {
+      type: "nutrition",
+      filters: nutritionFruits,
+      setFilter: setNutritionFilters,
+      label: "Nutritions",
+    },
+  ];
+
+  const getFilterConfig = (currentFilter: string[] | null) => {
+    if (!currentFilter) return null;
+
+    return configs.find((config) =>
+      parentFilterCorrespond(currentFilter, config.filters)
+    );
+  };
+
+  const currentConfig = getFilterConfig(selectedFilterParent);
+
   return (
     <div className="filters-container">
       <ThemedText color="grey">Apply filters...</ThemedText>
       <div className="filter-buttons-container">
-        {!selectedFilterDropdown ||
-        arraysEqual(selectedFilterDropdown, familyFruits) ? (
-          <Button onClick={() => setSelectedFilterDropdown(familyFruits)}>
-            Family
-          </Button>
-        ) : null}
+        {configs.map(
+          ({
+            type,
+            filters,
+            label,
+          }: {
+            type: string;
+            filters: string[];
+            label: string;
+          }) =>
+            (!selectedFilterParent ||
+              parentFilterCorrespond(selectedFilterParent, filters)) && (
+              <Button
+                key={type}
+                onClick={() => setSelectedFilterParent(filters)}
+              >
+                {label}
+              </Button>
+            )
+        )}
 
-        {!selectedFilterDropdown ||
-        arraysEqual(selectedFilterDropdown, orderFruits) ? (
-          <Button onClick={() => setSelectedFilterDropdown(orderFruits)}>
-            Order
-          </Button>
-        ) : null}
-
-        {!selectedFilterDropdown ||
-        arraysEqual(selectedFilterDropdown, genusFruits) ? (
-          <Button onClick={() => setSelectedFilterDropdown(genusFruits)}>
-            Genus
-          </Button>
-        ) : null}
-
-        {!selectedFilterDropdown ||
-        arraysEqual(selectedFilterDropdown, nutritionFruits) ? (
-          <Button onClick={() => setSelectedFilterDropdown(nutritionFruits)}>
-            Nutritions
-          </Button>
-        ) : null}
-
-        {selectedFilterDropdown && (
-          <Button onClick={() => setSelectedFilterDropdown(null)}>X</Button>
+        {selectedFilterParent && (
+          <Button onClick={() => setSelectedFilterParent(null)}>X</Button>
         )}
       </div>
 
       <AnimatePresence>
-        {selectedFilterDropdown && (
+        {selectedFilterParent && currentConfig && (
           <Dropdown
-            filters={selectedFilterDropdown}
-            setFilter={
-              arraysEqual(selectedFilterDropdown, familyFruits)
-                ? setFamilyFilters
-                : arraysEqual(selectedFilterDropdown, orderFruits)
-                ? setOrderFilters
-                : arraysEqual(selectedFilterDropdown, genusFruits)
-                ? setGenusFilters
-                : setGenusFilters // Assurez-vous que ceci est correct
-            }
-            filterType={
-              arraysEqual(selectedFilterDropdown, familyFruits)
-                ? "family"
-                : arraysEqual(selectedFilterDropdown, orderFruits)
-                ? "order"
-                : arraysEqual(selectedFilterDropdown, genusFruits)
-                ? "genus"
-                : "nutrition"
-            }
+            filters={currentConfig.filters}
+            setFilter={currentConfig.setFilter}
+            filterType={currentConfig.type}
           />
         )}
       </AnimatePresence>

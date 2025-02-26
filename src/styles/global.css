@@ -27,12 +27,6 @@ h1 a {
   color: black;
 }
 
-/* Home page */
-.doughnut{
-  width: 25%;
-  height: 25%;
-}
-
 /* Yard page */
 .yard-container {
   display: flex;
@@ -49,4 +43,39 @@ h1 a {
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   z-index: 10;
+}
+
+
+/* Home page */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+}
+
+.home-content {
+  text-align: center;
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+}
+
+.logo-container h1 {
+  font-size: 3rem;
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+}
+
+.welcome-text {
+  font-size: 1.5rem;
+  color: #666;
+  line-height: 1.5;
 }

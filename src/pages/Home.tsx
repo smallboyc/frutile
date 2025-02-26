@@ -1,14 +1,17 @@
-import DoughnutChart from "../components/Pie/PieChart";
+import Logo from "../components/Header/Logo/Logo";
 
 const Home = () => {
   return (
-    <>
-      <p>Hello Home !</p>
-      <p>Nutritions : Visualiser l'apport nutriotionnel des fruits !</p>
-      <div className="doughnut">
-        <DoughnutChart />
+    <div className="home-container">
+      <div className="home-content">
+        <div className="logo-container">
+          <Logo />
+        </div>
+        <p className="welcome-text">
+          Welcome to my website where you can compare all fruits
+        </p>
       </div>
-    </>
+    </div>
   );
 };
 

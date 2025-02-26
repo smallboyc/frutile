@@ -6,7 +6,6 @@ const Logo = () => {
   return (
     <>
       <img src={FrutileIcon} width={32} height={32} alt="fr'utile icon" />
-
       <ThemedText variant="title">
         <NavLink to="/">fr'utile</NavLink>
       </ThemedText>

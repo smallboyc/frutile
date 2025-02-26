@@ -5,6 +5,7 @@ export const useFilters = (data: Fruit[] | null) => {
   const [familyFilters, setFamilyFilters] = useState<string[]>([]);
   const [orderFilters, setOrderFilters] = useState<string[]>([]);
   const [genusFilters, setGenusFilters] = useState<string[]>([]);
+  const [nutritionFilters, setNutritionFilters] = useState<string[]>([]);
 
   //get all family filter
   const familyFruits = useMemo(() => {
@@ -55,6 +56,8 @@ export const useFilters = (data: Fruit[] | null) => {
     setOrderFilters,
     genusFilters,
     setGenusFilters,
+    nutritionFilters,
+    setNutritionFilters,
     familyFruits,
     orderFruits,
     genusFruits,

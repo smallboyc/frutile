@@ -9,7 +9,6 @@ const Header = () => {
     <header>
       <div
         className="frutile-logo-container"
-        onClick={() => localStorage.clear()}
       >
         <Logo />
       </div>

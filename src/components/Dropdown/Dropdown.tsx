@@ -14,7 +14,7 @@ const Dropdown = ({ filters, setFilter, filterType }: DropdownProps) => {
   const [maxFilter, setMaxFilter] = useState<number>(7);
 
   useEffect(() => {
-    // Récupérer les filtres sélectionnés depuis localStorage au chargement
+    // get filters from localStorage
     const storedFilters = localStorage.getItem(filterType);
     if (storedFilters) {
       setSelectedFilters(JSON.parse(storedFilters));
@@ -24,10 +24,16 @@ const Dropdown = ({ filters, setFilter, filterType }: DropdownProps) => {
 
   const toggleFilter = (filter: string) => {
     let newFilters;
+    //remove filter if it is already selected
     if (selectedFilters.includes(filter)) {
       newFilters = selectedFilters.filter((f) => f !== filter);
     } else {
-      newFilters = [...selectedFilters, filter];
+      //only one nutrition filter is allowed
+      if (filterType === "nutrition") {
+        newFilters = [filter];
+      } else {
+        newFilters = [...selectedFilters, filter];
+      }
     }
     setSelectedFilters(newFilters);
     setFilter(newFilters);
@@ -56,7 +62,7 @@ const Dropdown = ({ filters, setFilter, filterType }: DropdownProps) => {
           max={filters?.length}
           onChange={(e) => setMaxFilter(Number(e.target.value))}
         />
-        <div>
+        <div className="checkbox-container-items">
           {filters?.map(
             (filter: string, index: number) =>
               maxFilter &&
