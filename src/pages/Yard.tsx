@@ -15,6 +15,7 @@ import { NutritionDiagram } from "../components/NutritionDiagram/NutritionDiagra
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");
   const [search, setSearch] = useState("");
+
   const [selectedFruit, setSelectedFruit] = useState<Fruit | null>(null);
   const {
     familyFilters,
@@ -60,6 +61,7 @@ const Yard = () => {
         orderFilters.includes(fruit.order)
       );
     }
+
     return result;
   }, [data, search, familyFilters, genusFilters, orderFilters]);
 

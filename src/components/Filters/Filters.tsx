@@ -4,6 +4,10 @@ import { AnimatePresence } from "framer-motion";
 import Dropdown from "../Dropdown/Dropdown";
 import "./Filters.css";
 import { parentFilterCorrespond } from "../../utils/utils";
+import { FaEye } from "react-icons/fa";
+import { useState } from "react";
+import { FaEyeSlash } from "react-icons/fa6";
+import { FaTrash } from "react-icons/fa";
 
 type FilterProps = {
   selectedFilterParent: string[] | null;
@@ -68,6 +72,8 @@ const Filters = ({
   };
 
   const currentConfig = getFilterConfig(selectedFilterParent);
+  const [showDropdown, setShowDropdown] = useState(true);
+  //TODO : Faire un usestate pour le localstorage.
 
   return (
     <div className="filters-container">
@@ -93,14 +99,38 @@ const Filters = ({
               </Button>
             )
         )}
-
+        {/* Close filter if selected */}
         {selectedFilterParent && (
-          <Button onClick={() => setSelectedFilterParent(null)}>X</Button>
+          <>
+            {showDropdown ? (
+              <Button onClick={() => setShowDropdown(!showDropdown)}>
+                <FaEye />
+              </Button>
+            ) : (
+              <Button onClick={() => setShowDropdown(!showDropdown)}>
+                <FaEyeSlash />
+              </Button>
+            )}
+            <Button onClick={() => setSelectedFilterParent(null)}>X</Button>
+          </>
+        )}
+        {localStorage.length > 0 && (
+          <Button
+            onClick={() => {
+              setFamilyFilters([]);
+              setGenusFilters([]);
+              setOrderFilters([]);
+              setNutritionFilters([]);
+              setSelectedFilterParent(null);
+              localStorage.clear();
+            }}
+          >
+            <FaTrash size={16} />
+          </Button>
         )}
       </div>
-
       <AnimatePresence>
-        {selectedFilterParent && currentConfig && (
+        {selectedFilterParent && showDropdown && currentConfig && (
           <Dropdown
             filters={currentConfig.filters}
             setFilter={currentConfig.setFilter}
