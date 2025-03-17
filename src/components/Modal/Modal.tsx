@@ -3,8 +3,10 @@ import { Fruit } from "../../types/Fruit";
 import ThemedText from "../ThemedText/ThemedText";
 import Button from "../Button/Button";
 import fruitsIcons from "../../assets/fruitsIcons";
-import { MdFavoriteBorder } from "react-icons/md";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import "./Modal.css";
+import { useEffect, useState } from "react";
+// import { useMemo } from "react";
 
 type ModalProps = {
   fruit: Fruit;
@@ -12,6 +14,34 @@ type ModalProps = {
 };
 
 const Modal = ({ fruit, closeModal }: ModalProps) => {
+  const [storageFavorites, setStorageFavorites] = useState<string[]>([]);
+
+  useEffect(() => {
+    //Get data from local storage.
+    const storageFavoriteData = localStorage.getItem("favorites");
+    setStorageFavorites(
+      storageFavoriteData && storageFavoriteData.length > 0
+        ? JSON.parse(storageFavoriteData)
+        : []
+    );
+  }, [storageFavorites]);
+
+  const setFavorite = (fruit: Fruit) => {
+    return storageFavorites?.includes(fruit.name);
+  };
+
+  const addToFavorites = (fruit: Fruit) => {
+    let newData = [];
+    if (!storageFavorites?.includes(fruit.name)) {
+      newData = [...storageFavorites, fruit.name];
+    } else {
+      newData = storageFavorites.filter(
+        (fruit_name: string) => fruit_name != fruit.name
+      );
+    }
+    localStorage.setItem("favorites", JSON.stringify(newData));
+  };
+
   return (
     <motion.div
       className="custom-modal"
@@ -24,7 +54,20 @@ const Modal = ({ fruit, closeModal }: ModalProps) => {
       }}
     >
       <section className="modal-container">
-         <MdFavoriteBorder className="favorite-icon" size={32} />
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="favorite-container"
+          onClick={() => {
+            addToFavorites(fruit);
+          }}
+        >
+          {setFavorite(fruit) ? (
+            <MdFavorite className="favorite-icon" size={32} />
+          ) : (
+            <MdFavoriteBorder className="favorite-icon" size={32} />
+          )}
+        </motion.div>
         <img
           src={
             (fruitsIcons as Record<string, string>)[

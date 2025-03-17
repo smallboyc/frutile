@@ -28,10 +28,11 @@
   gap: 24px;
 }
 
-.favorite-icon {
+.favorite-container {
   position: absolute;
   top: 0;
   right: 0;
+  cursor: pointer;
 }
 
 .data-container {
