@@ -5,8 +5,8 @@ import "./Fruits.css";
 
 type FruitProps = {
   filteredDataFruits: Fruit[] | undefined;
-  loading: boolean;
-  setSelectedFruit: React.Dispatch<React.SetStateAction<Fruit | null>>;
+  loading?: boolean;
+  setSelectedFruit?: React.Dispatch<React.SetStateAction<Fruit | null>>;
 };
 
 const Fruits = ({
@@ -23,7 +23,7 @@ const Fruits = ({
           <Card
             key={fruit.id}
             fruit={fruit}
-            OnClick={() => setSelectedFruit(fruit)}
+            OnClick={() => setSelectedFruit && setSelectedFruit(fruit)}
           />
         ))
       )}

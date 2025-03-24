@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import fruitsIcons from "../../assets/fruitsIcons";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import "./Modal.css";
-import { useEffect, useState } from "react";
+import { useFavorite } from "../../hooks/useFavorite";
 // import { useMemo } from "react";
 
 type ModalProps = {
@@ -14,34 +14,9 @@ type ModalProps = {
 };
 
 const Modal = ({ fruit, closeModal }: ModalProps) => {
-  const [storageFavorites, setStorageFavorites] = useState<string[]>([]);
-
-  useEffect(() => {
-    //Get data from local storage.
-    const storageFavoriteData = localStorage.getItem("favorites");
-    setStorageFavorites(
-      storageFavoriteData && storageFavoriteData.length > 0
-        ? JSON.parse(storageFavoriteData)
-        : []
-    );
-  }, [storageFavorites]);
-
-  const setFavorite = (fruit: Fruit) => {
-    return storageFavorites?.includes(fruit.name);
-  };
-
-  const addToFavorites = (fruit: Fruit) => {
-    let newData = [];
-    if (!storageFavorites?.includes(fruit.name)) {
-      newData = [...storageFavorites, fruit.name];
-    } else {
-      newData = storageFavorites.filter(
-        (fruit_name: string) => fruit_name != fruit.name
-      );
-    }
-    localStorage.setItem("favorites", JSON.stringify(newData));
-  };
-
+  //
+  const { addToFavorites, showAsFavorite } = useFavorite();
+  //
   return (
     <motion.div
       className="custom-modal"
@@ -62,7 +37,7 @@ const Modal = ({ fruit, closeModal }: ModalProps) => {
             addToFavorites(fruit);
           }}
         >
-          {setFavorite(fruit) ? (
+          {showAsFavorite(fruit) ? (
             <MdFavorite className="favorite-icon" size={32} />
           ) : (
             <MdFavoriteBorder className="favorite-icon" size={32} />

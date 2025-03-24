@@ -17,20 +17,8 @@ const Yard = () => {
   const [search, setSearch] = useState("");
 
   const [selectedFruit, setSelectedFruit] = useState<Fruit | null>(null);
-  const {
-    familyFilters,
-    setFamilyFilters,
-    orderFilters,
-    setOrderFilters,
-    genusFilters,
-    setGenusFilters,
-    familyFruits,
-    orderFruits,
-    genusFruits,
-    nutritionFruits,
-    nutritionFilters,
-    setNutritionFilters,
-  } = useFilters(data);
+  //
+  const fruitFilter = useFilters(data)
 
   const [selectedFilterParent, setSelectedFilterParent] = useState<
     string[] | null
@@ -46,24 +34,24 @@ const Yard = () => {
       fruit.name.toLowerCase().startsWith(search.toLowerCase())
     );
 
-    if (familyFilters.length) {
+    if (fruitFilter.familyFilters.length) {
       result = result?.filter((fruit: Fruit) =>
-        familyFilters.includes(fruit.family)
+        fruitFilter.familyFilters.includes(fruit.family)
       );
     }
-    if (genusFilters.length) {
+    if (fruitFilter.genusFilters.length) {
       result = result?.filter((fruit: Fruit) =>
-        genusFilters.includes(fruit.genus)
+        fruitFilter.genusFilters.includes(fruit.genus)
       );
     }
-    if (orderFilters.length) {
+    if (fruitFilter.orderFilters.length) {
       result = result?.filter((fruit: Fruit) =>
-        orderFilters.includes(fruit.order)
+        fruitFilter.orderFilters.includes(fruit.order)
       );
     }
 
     return result;
-  }, [data, search, familyFilters, genusFilters, orderFilters]);
+  }, [data, search, fruitFilter.familyFilters, fruitFilter.genusFilters, fruitFilter.orderFilters]);
 
   return (
     <section className="yard-container">
@@ -76,14 +64,7 @@ const Yard = () => {
       <Filters
         selectedFilterParent={selectedFilterParent}
         setSelectedFilterParent={setSelectedFilterParent}
-        familyFruits={familyFruits}
-        orderFruits={orderFruits}
-        genusFruits={genusFruits}
-        nutritionFruits={nutritionFruits}
-        setFamilyFilters={setFamilyFilters}
-        setOrderFilters={setOrderFilters}
-        setGenusFilters={setGenusFilters}
-        setNutritionFilters={setNutritionFilters}
+        fruitFilters={fruitFilter}
       />
       <ThemedText color="grey">
         {filteredDataFruits?.length != 0
@@ -91,10 +72,10 @@ const Yard = () => {
           : "No fruits to display :("}
       </ThemedText>
       {selectedFilterParent &&
-      parentFilterCorrespond(selectedFilterParent, nutritionFruits) ? (
+      parentFilterCorrespond(selectedFilterParent, fruitFilter.nutritionFruits) ? (
         <NutritionDiagram
           filteredDataFruits={filteredDataFruits}
-          nutritionFilters={nutritionFilters}
+          nutritionFilters={fruitFilter.nutritionFilters}
         />
       ) : (
         <Fruits

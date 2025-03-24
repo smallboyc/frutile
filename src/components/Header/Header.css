@@ -11,8 +11,3 @@ header {
   gap: 10px;
 }
 
-.header-info-container {
-  display: flex;
-  align-items: center;
-  gap: 100px;
-}

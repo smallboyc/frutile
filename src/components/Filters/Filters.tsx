@@ -8,57 +8,44 @@ import { FaEye } from "react-icons/fa";
 import { useState } from "react";
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaTrash } from "react-icons/fa";
+import { useFilterProps } from "../../types/Fruit";
 
 type FilterProps = {
   selectedFilterParent: string[] | null;
   setSelectedFilterParent: React.Dispatch<
     React.SetStateAction<string[] | null>
   >;
-  familyFruits: string[];
-  orderFruits: string[];
-  genusFruits: string[];
-  nutritionFruits: string[];
-  setFamilyFilters: React.Dispatch<React.SetStateAction<string[]>>;
-  setOrderFilters: React.Dispatch<React.SetStateAction<string[]>>;
-  setGenusFilters: React.Dispatch<React.SetStateAction<string[]>>;
-  setNutritionFilters: React.Dispatch<React.SetStateAction<string[]>>;
+  fruitFilters: useFilterProps;
 };
 
 const Filters = ({
   selectedFilterParent,
   setSelectedFilterParent,
-  familyFruits,
-  orderFruits,
-  genusFruits,
-  nutritionFruits,
-  setFamilyFilters,
-  setOrderFilters,
-  setGenusFilters,
-  setNutritionFilters,
+  fruitFilters,
 }: FilterProps) => {
   const configs = [
     {
       type: "family",
-      filters: familyFruits,
-      setFilter: setFamilyFilters,
+      filters: fruitFilters.familyFruits,
+      setFilter: fruitFilters.setFamilyFilters,
       label: "Family",
     },
     {
       type: "order",
-      filters: orderFruits,
-      setFilter: setOrderFilters,
+      filters: fruitFilters.orderFruits,
+      setFilter: fruitFilters.setOrderFilters,
       label: "Order",
     },
     {
       type: "genus",
-      filters: genusFruits,
-      setFilter: setGenusFilters,
+      filters: fruitFilters.genusFruits,
+      setFilter: fruitFilters.setGenusFilters,
       label: "Genus",
     },
     {
       type: "nutrition",
-      filters: nutritionFruits,
-      setFilter: setNutritionFilters,
+      filters: fruitFilters.nutritionFruits,
+      setFilter: fruitFilters.setNutritionFilters,
       label: "Nutritions",
     },
   ];
@@ -117,10 +104,10 @@ const Filters = ({
         {localStorage.length > 0 && (
           <Button
             onClick={() => {
-              setFamilyFilters([]);
-              setGenusFilters([]);
-              setOrderFilters([]);
-              setNutritionFilters([]);
+              fruitFilters.setFamilyFilters([]);
+              fruitFilters.setGenusFilters([]);
+              fruitFilters.setOrderFilters([]);
+              fruitFilters.setNutritionFilters([]);
               setSelectedFilterParent(null);
               localStorage.clear();
             }}
