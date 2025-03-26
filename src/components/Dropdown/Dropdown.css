@@ -20,7 +20,8 @@
   align-items: start;
   justify-content: center;
   gap: 10px;
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
 }
 
 .checkbox-container > div {
@@ -56,4 +57,11 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background-color: var(--primary-color);
+}
+
+
+@media screen and (max-width: 480px) {
+  .checkbox-container {
+    max-width: 200px;
+  }
 }

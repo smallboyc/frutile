@@ -32,7 +32,7 @@ const Modal = ({ fruit, closeModal }: ModalProps) => {
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="favorite-container"
+          className="favorite-icon-container"
           onClick={() => {
             addToFavorites(fruit);
           }}

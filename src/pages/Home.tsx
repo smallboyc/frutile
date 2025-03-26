@@ -5,7 +5,7 @@ const Home = () => {
     <div className="home-container">
       <div className="home-content">
         <div className="logo-container">
-          <Logo />
+          <Logo large/>
         </div>
         <p className="welcome-text">
           Welcome to my website where you can compare all fruits

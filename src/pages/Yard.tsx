@@ -1,16 +1,16 @@
 import { useMemo, useState } from "react";
 import { Fruit } from "../types/Fruit";
 import { useFetchData } from "../hooks/useFetchData";
+import { NutritionDiagram } from "../components/NutritionDiagram/NutritionDiagram";
+import { AnimatePresence, motion } from "framer-motion";
+import { useFilters } from "../hooks/useFilters";
+import { parentFilterCorrespond } from "../utils/utils";
 import "rsuite/Loader/styles/index.css";
 import SearchBar from "../components/SearchBar/SearchBar";
 import ThemedText from "../components/ThemedText/ThemedText";
-import { AnimatePresence, motion } from "framer-motion";
 import Modal from "../components/Modal/Modal";
-import { useFilters } from "../hooks/useFilters";
 import Filters from "../components/Filters/Filters";
 import Fruits from "../components/Fruits/Fruits";
-import { parentFilterCorrespond } from "../utils/utils";
-import { NutritionDiagram } from "../components/NutritionDiagram/NutritionDiagram";
 
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");
@@ -18,7 +18,7 @@ const Yard = () => {
 
   const [selectedFruit, setSelectedFruit] = useState<Fruit | null>(null);
   //
-  const fruitFilter = useFilters(data)
+  const fruitFilter = useFilters(data);
 
   const [selectedFilterParent, setSelectedFilterParent] = useState<
     string[] | null
@@ -51,7 +51,13 @@ const Yard = () => {
     }
 
     return result;
-  }, [data, search, fruitFilter.familyFilters, fruitFilter.genusFilters, fruitFilter.orderFilters]);
+  }, [
+    data,
+    search,
+    fruitFilter.familyFilters,
+    fruitFilter.genusFilters,
+    fruitFilter.orderFilters,
+  ]);
 
   return (
     <section className="yard-container">
@@ -72,7 +78,10 @@ const Yard = () => {
           : "No fruits to display :("}
       </ThemedText>
       {selectedFilterParent &&
-      parentFilterCorrespond(selectedFilterParent, fruitFilter.nutritionFruits) ? (
+      parentFilterCorrespond(
+        selectedFilterParent,
+        fruitFilter.nutritionFruits
+      ) ? (
         <NutritionDiagram
           filteredDataFruits={filteredDataFruits}
           nutritionFilters={fruitFilter.nutritionFilters}

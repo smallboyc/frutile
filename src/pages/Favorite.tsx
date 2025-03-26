@@ -5,10 +5,10 @@ import { useFavorite } from "../hooks/useFavorite";
 const Favorite = () => {
   const { favorites } = useFavorite();
   return (
-    <main>
+    <section className="favorite-container">
       <ThemedText> Favorite numbers : {favorites.length}</ThemedText>
       <Fruits filteredDataFruits={favorites} />
-    </main>
+    </section>
   );
 };
 

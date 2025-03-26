@@ -3,11 +3,21 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: var(--container-padding);
+  
 }
 
 .frutile-logo-container {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+/* mobiles */
+@media screen and (max-width: 480px) {
+header{
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 2px solid var(--terciary-color);
+ }
 }
 
