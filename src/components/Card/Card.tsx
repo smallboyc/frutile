@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Fruit } from "../../types/Fruit";
-import fruitsIcons from "../../assets/fruitsIcons";
 import { motion, useMotionValue } from "framer-motion";
-import "./Card.css";
+import fruitsIcons from "../../assets/fruitsIcons";
 import ThemedText from "../ThemedText/ThemedText";
+import "./Card.css";
 
 type CardProps = {
   fruit: Fruit;

@@ -6,4 +6,17 @@
 .footer-infos-container {
   padding: var(--container-padding);
   background-color: var(--terciary-color);
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* mobiles */
+@media screen and (max-width: 480px) {
+  .footer-infos-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
 }

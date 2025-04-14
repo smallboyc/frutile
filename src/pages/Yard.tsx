@@ -11,6 +11,7 @@ import ThemedText from "../components/ThemedText/ThemedText";
 import Modal from "../components/Modal/Modal";
 import Filters from "../components/Filters/Filters";
 import Fruits from "../components/Fruits/Fruits";
+import "../styles/Yard.css";
 
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");

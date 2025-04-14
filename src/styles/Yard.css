@@ -1,0 +1,26 @@
+/* Yard page */
+.yard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 60px 100px;
+  min-height: 1700px;
+  height: 100%;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+@media screen and (max-width: 768px) {
+  .yard-container {
+    padding: 30px 50px;
+    min-height: 1700px;
+  }
+}

@@ -4,10 +4,11 @@ const Footer = () => {
   return (
     <footer>
       <section className="footer-icons-container">
-        <ThemedText>Fun</ThemedText>
+        <ThemedText>Made with - ReactJS.</ThemedText>
       </section>
       <section className="footer-infos-container">
-        <ThemedText color="white">End</ThemedText>
+        <ThemedText color="white">Contact : maxencedup44@gmail.com</ThemedText>
+        <ThemedText color="white">| E4 - IMAC</ThemedText>
       </section>
     </footer>
   );

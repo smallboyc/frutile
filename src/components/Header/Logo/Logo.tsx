@@ -11,7 +11,7 @@ const Logo = ({ large = false }: { large?: boolean }) => {
         height={large ? 72 : 32}
         alt="fr'utile icon"
       />
-      <ThemedText variant="title">
+      <ThemedText variant={large ? "bigTitle" : "title"}>
         <NavLink to="/">fr'utile</NavLink>
       </ThemedText>
     </>
