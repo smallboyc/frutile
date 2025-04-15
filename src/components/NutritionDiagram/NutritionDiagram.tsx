@@ -2,7 +2,6 @@ import { NutritionDiagramProps } from "../../types/props";
 import DoughnutChart from "../DoughnutChart/DoughnutChart";
 import "./NutritionDiagram.css";
 
-
 export const NutritionDiagram = ({
   filteredDataFruits,
   nutritionFilters,

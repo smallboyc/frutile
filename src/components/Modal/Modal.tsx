@@ -7,8 +7,6 @@ import { useFavorite } from "../../hooks/useFavorite";
 import { ModalProps } from "../../types/props";
 import "./Modal.css";
 
-
-
 const Modal = ({ fruit, closeModal }: ModalProps) => {
   //
   const { addToFavorites, showAsFavorite } = useFavorite();

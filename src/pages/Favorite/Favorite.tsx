@@ -1,7 +1,8 @@
-import Fruits from "../components/Fruits/Fruits";
-import ThemedText from "../components/ThemedText/ThemedText";
-import { useFavorite } from "../hooks/useFavorite";
-import "../styles/Favorite.css";
+
+import Fruits from "../../components/Fruits/Fruits";
+import ThemedText from "../../components/ThemedText/ThemedText";
+import { useFavorite } from "../../hooks/useFavorite";
+import "./Favorite.css";
 
 const Favorite = () => {
   const { favorites } = useFavorite();

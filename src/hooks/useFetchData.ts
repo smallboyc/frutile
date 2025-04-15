@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Fruit } from "../types/props";
+import { Fruit } from "../types/api";
 
 export const useFetchData = (url: string) => {
   const [data, setData] = useState<Fruit[] | null>(null);

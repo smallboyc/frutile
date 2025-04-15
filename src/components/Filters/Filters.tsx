@@ -52,7 +52,6 @@ const Filters = ({
 
   const currentConfig = getFilterConfig(selectedFilterParent);
   const [showDropdown, setShowDropdown] = useState(true);
-  //TODO : Faire un usestate pour le localstorage.
 
   return (
     <div className="filters-container">
@@ -93,20 +92,18 @@ const Filters = ({
             <Button onClick={() => setSelectedFilterParent(null)}>X</Button>
           </>
         )}
-        {localStorage.length > 0 && (
-          <Button
-            onClick={() => {
-              fruitFilters.setFamilyFilters([]);
-              fruitFilters.setGenusFilters([]);
-              fruitFilters.setOrderFilters([]);
-              fruitFilters.setNutritionFilters([]);
-              setSelectedFilterParent(null);
-              localStorage.clear();
-            }}
-          >
-            <FaTrash size={16} />
-          </Button>
-        )}
+        <Button
+          onClick={() => {
+            fruitFilters.setFamilyFilters([]);
+            fruitFilters.setGenusFilters([]);
+            fruitFilters.setOrderFilters([]);
+            fruitFilters.setNutritionFilters([]);
+            setSelectedFilterParent(null);
+            localStorage.clear();
+          }}
+        >
+          <FaTrash size={16} />
+        </Button>
       </div>
       <AnimatePresence>
         {selectedFilterParent && showDropdown && currentConfig && (

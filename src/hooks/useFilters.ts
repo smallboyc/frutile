@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Fruit } from "../types/props";
+import { Fruit } from "../types/api";
 
 export const useFilters = (data: Fruit[] | null) => {
   const [familyFilters, setFamilyFilters] = useState<string[]>([]);

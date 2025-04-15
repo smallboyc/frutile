@@ -1,17 +1,17 @@
 import { useMemo, useState } from "react";
-import { useFetchData } from "../hooks/useFetchData";
-import { NutritionDiagram } from "../components/NutritionDiagram/NutritionDiagram";
+import { useFetchData } from "../../hooks/useFetchData";
+import { NutritionDiagram } from "../../components/NutritionDiagram/NutritionDiagram";
 import { AnimatePresence, motion } from "framer-motion";
-import { useFilters } from "../hooks/useFilters";
-import { parentFilterCorrespond } from "../utils/utils";
-import { Fruit } from "../types/api";
+import { useFilters } from "../../hooks/useFilters";
+import { parentFilterCorrespond } from "../../utils/utils";
+import { Fruit } from "../../types/api";
 import "rsuite/Loader/styles/index.css";
-import SearchBar from "../components/SearchBar/SearchBar";
-import ThemedText from "../components/ThemedText/ThemedText";
-import Modal from "../components/Modal/Modal";
-import Filters from "../components/Filters/Filters";
-import Fruits from "../components/Fruits/Fruits";
-import "../styles/Yard.css";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import ThemedText from "../../components/ThemedText/ThemedText";
+import Modal from "../../components/Modal/Modal";
+import Filters from "../../components/Filters/Filters";
+import Fruits from "../../components/Fruits/Fruits";
+import "./Yard.css"
 
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");

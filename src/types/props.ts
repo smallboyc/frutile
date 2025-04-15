@@ -67,3 +67,4 @@ export type ThemedTextProps = {
   variant?: "bigTitle" | "title" | "text";
   color?: "black" | "grey" | "white";
 };
+

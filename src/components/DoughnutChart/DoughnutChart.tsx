@@ -13,7 +13,7 @@ import { DoughnutProps } from "../../types/props";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = ({ dataFruit, nutritionFilters }: DoughnutProps) => {
-  // Pondérations pour le calcul du score nutritionnel
+
   const WEIGHTS = {
     calories: 0.2,
     fat: 0.3,

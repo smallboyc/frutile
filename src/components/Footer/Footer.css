@@ -11,7 +11,6 @@
 }
 
 
-/* mobiles */
 @media screen and (max-width: 480px) {
   .footer-infos-container {
     flex-direction: column;

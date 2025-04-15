@@ -1,8 +1,8 @@
-import Logo from "../components/Header/Logo/Logo";
-import fruityvice from "../assets/images";
-import ThemedText from "../components/ThemedText/ThemedText";
-import Button from "../components/Button/Button";
-import "../styles/Home.css";
+import fruityvice from "../../assets/images";
+import Button from "../../components/Button/Button";
+import Logo from "../../components/Header/Logo/Logo";
+import ThemedText from "../../components/ThemedText/ThemedText";
+import "./Home.css";
 
 const Home = () => {
   return (
