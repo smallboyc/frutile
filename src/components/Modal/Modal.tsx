@@ -1,17 +1,13 @@
 import { motion } from "framer-motion";
-import { Fruit } from "../../types/Fruit";
 import ThemedText from "../ThemedText/ThemedText";
 import Button from "../Button/Button";
 import fruitsIcons from "../../assets/fruitsIcons";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import "./Modal.css";
 import { useFavorite } from "../../hooks/useFavorite";
-// import { useMemo } from "react";
+import { ModalProps } from "../../types/props";
+import "./Modal.css";
 
-type ModalProps = {
-  fruit: Fruit;
-  closeModal: () => void;
-};
+
 
 const Modal = ({ fruit, closeModal }: ModalProps) => {
   //

@@ -1,12 +1,7 @@
 import { motion } from "framer-motion";
 import ThemedText from "../ThemedText/ThemedText";
+import { ButtonProps } from "../../types/props";
 import "./Button.css";
-
-type ButtonProps = {
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-  onClick: () => void;
-};
 
 const Button = ({ children, style, onClick }: ButtonProps) => {
   return (

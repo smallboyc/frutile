@@ -1,11 +1,7 @@
 import { FaSearch } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { SearchBarProps } from "../../types/props";
 import "./SearchBar.css";
-
-type SearchBarProps = {
-  search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
-};
 
 const SearchBar = ({ search, setSearch }: SearchBarProps) => {
   return (

@@ -1,13 +1,8 @@
 import { motion } from "framer-motion";
 import "./Dropdown.css";
 import { useEffect, useState } from "react";
+import { DropdownProps } from "../../types/props";
 import ThemedText from "../ThemedText/ThemedText";
-
-type DropdownProps = {
-  filters?: string[];
-  setFilter: React.Dispatch<React.SetStateAction<string[]>>;
-  filterType: string;
-};
 
 const Dropdown = ({ filters, setFilter, filterType }: DropdownProps) => {
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);

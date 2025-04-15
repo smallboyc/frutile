@@ -1,14 +1,9 @@
 import { useState } from "react";
-import { Fruit } from "../../types/Fruit";
 import { motion, useMotionValue } from "framer-motion";
 import fruitsIcons from "../../assets/fruitsIcons";
 import ThemedText from "../ThemedText/ThemedText";
+import { CardProps } from "../../types/props";
 import "./Card.css";
-
-type CardProps = {
-  fruit: Fruit;
-  OnClick: () => void;
-};
 
 const Card = ({ fruit, OnClick }: CardProps) => {
   const [isHovered, setIsHovered] = useState(false);

@@ -1,5 +1,6 @@
 import ThemedText from "../ThemedText/ThemedText";
 import "./Footer.css";
+
 const Footer = () => {
   return (
     <footer>

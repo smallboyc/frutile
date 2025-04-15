@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
-import { Fruit } from "../types/Fruit";
 import { useFetchData } from "../hooks/useFetchData";
 import { NutritionDiagram } from "../components/NutritionDiagram/NutritionDiagram";
 import { AnimatePresence, motion } from "framer-motion";
 import { useFilters } from "../hooks/useFilters";
 import { parentFilterCorrespond } from "../utils/utils";
+import { Fruit } from "../types/api";
 import "rsuite/Loader/styles/index.css";
 import SearchBar from "../components/SearchBar/SearchBar";
 import ThemedText from "../components/ThemedText/ThemedText";

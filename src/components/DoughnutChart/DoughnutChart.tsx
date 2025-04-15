@@ -6,16 +6,11 @@ import {
   TooltipItem,
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { Fruit } from "../../types/Fruit";
 import { useMemo } from "react";
 import { generateRandomColor } from "../../utils/utils";
+import { DoughnutProps } from "../../types/props";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-type DoughnutProps = {
-  dataFruit: Fruit[] | undefined;
-  nutritionFilters: string[];
-};
 
 const DoughnutChart = ({ dataFruit, nutritionFilters }: DoughnutProps) => {
   // Pondérations pour le calcul du score nutritionnel
@@ -30,7 +25,6 @@ const DoughnutChart = ({ dataFruit, nutritionFilters }: DoughnutProps) => {
   const processedData = useMemo(() => {
     if (!dataFruit) return [];
 
-    // Si aucun filtre n'est sélectionné, on calcule le score pondéré
     if (!nutritionFilters.length) {
       return dataFruit.map((fruit) => ({
         name: fruit.name,
@@ -44,7 +38,6 @@ const DoughnutChart = ({ dataFruit, nutritionFilters }: DoughnutProps) => {
       }));
     }
 
-    // Si un filtre est sélectionné, on retourne uniquement cette valeur
     const selectedNutrition = nutritionFilters[0];
     return dataFruit.map((fruit) => ({
       name: fruit.name,

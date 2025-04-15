@@ -1,11 +1,7 @@
-import { Fruit } from "../../types/Fruit";
+import { NutritionDiagramProps } from "../../types/props";
 import DoughnutChart from "../DoughnutChart/DoughnutChart";
 import "./NutritionDiagram.css";
 
-type NutritionDiagramProps = {
-  filteredDataFruits: Fruit[] | undefined;
-  nutritionFilters: string[];
-};
 
 export const NutritionDiagram = ({
   filteredDataFruits,

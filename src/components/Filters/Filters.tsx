@@ -8,15 +8,7 @@ import { FaEye } from "react-icons/fa";
 import { useState } from "react";
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaTrash } from "react-icons/fa";
-import { useFilterProps } from "../../types/Fruit";
-
-type FilterProps = {
-  selectedFilterParent: string[] | null;
-  setSelectedFilterParent: React.Dispatch<
-    React.SetStateAction<string[] | null>
-  >;
-  fruitFilters: useFilterProps;
-};
+import { FilterProps } from "../../types/props";
 
 const Filters = ({
   selectedFilterParent,

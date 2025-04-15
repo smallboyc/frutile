@@ -1,11 +1,6 @@
-import React from "react";
+import { ThemedTextProps } from "../../types/props";
 import "./ThemedText.css";
 
-interface ThemedTextProps {
-  children: React.ReactNode;
-  variant?: "bigTitle" | "title" | "text";
-  color?: "black" | "grey" | "white";
-}
 
 const ThemedText = ({
   children,

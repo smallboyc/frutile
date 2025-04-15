@@ -1,13 +1,8 @@
 import Loader from "rsuite/Loader";
 import Card from "../Card/Card";
-import { Fruit } from "../../types/Fruit";
+import { FruitProps } from "../../types/props";
+import { Fruit } from "../../types/api";
 import "./Fruits.css";
-
-type FruitProps = {
-  filteredDataFruits: Fruit[] | undefined;
-  loading?: boolean;
-  setSelectedFruit?: React.Dispatch<React.SetStateAction<Fruit | null>>;
-};
 
 const Fruits = ({
   filteredDataFruits,

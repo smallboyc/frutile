@@ -1,6 +1,5 @@
-
 import { useEffect, useState } from "react";
-import { Fruit } from "../types/Fruit";
+import { Fruit } from "../types/props";
 
 export const useFavorite = () => {
   const [favorites, setFavorites] = useState<Fruit[]>([]);
