@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../layout/Root";
-import Home from "../pages/Home";
-import Yard from "../pages/Yard";
+import Home from "../pages/Home/Home";
+import Yard from "../pages/Yard/Yard";
+import Favorite from "../pages/Favorite/Favorite";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Root />, //Layout
     children: [
       {
         path: "",
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/yard",
         element: <Yard />,
+      },
+      {
+        path: "/favorite",
+        element: <Favorite />,
       },
     ],
   },

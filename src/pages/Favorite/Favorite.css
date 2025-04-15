@@ -1,0 +1,8 @@
+.favorite-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 60px 100px;
+  min-height: 1000px;
+  height: 100%;
+}
