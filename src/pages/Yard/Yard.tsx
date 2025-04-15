@@ -11,7 +11,7 @@ import ThemedText from "../../components/ThemedText/ThemedText";
 import Modal from "../../components/Modal/Modal";
 import Filters from "../../components/Filters/Filters";
 import Fruits from "../../components/Fruits/Fruits";
-import "./Yard.css"
+import "./Yard.css";
 
 const Yard = () => {
   const { data, loading } = useFetchData("api/fruit/all");
@@ -83,10 +83,13 @@ const Yard = () => {
         selectedFilterParent,
         fruitFilter.nutritionFruits
       ) ? (
-        <NutritionDiagram
-          filteredDataFruits={filteredDataFruits}
-          nutritionFilters={fruitFilter.nutritionFilters}
-        />
+        <>
+          <ThemedText>Nutrition filter in grams is based on 100g</ThemedText>
+          <NutritionDiagram
+            filteredDataFruits={filteredDataFruits}
+            nutritionFilters={fruitFilter.nutritionFilters}
+          />
+        </>
       ) : (
         <Fruits
           filteredDataFruits={filteredDataFruits}
