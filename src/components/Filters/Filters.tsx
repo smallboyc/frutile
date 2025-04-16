@@ -15,6 +15,7 @@ const Filters = ({
   setSelectedFilterParent,
   fruitFilters,
 }: FilterProps) => {
+  
   const configs = [
     {
       type: "family",
